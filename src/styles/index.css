@@ -1,0 +1,133 @@
+/* font import  */
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+/* logo styles  */
+#logo {
+    max-height: 8em;
+}
+
+#logo-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* table styles  */
+.table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table-header, .chart-header {
+    font-family: 'Gloria Hallelujah', cursive;
+    text-align: center;
+    margin-top: 2em;
+}
+
+/* chart styles  */
+.chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin-bottom: 1em;
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    padding: 0.3em;
+    gap: 0.3em;
+}
+
+.Rick.Sanchez {
+    width: 2em;
+    height: 1em;
+    background-color: rgb(15, 149, 15);
+    border-radius: 8px;
+}
+
+.Rick.Sanchez-rect {
+    fill: rgb(15, 149, 15);
+}
+
+.Morty.Smith {
+    width: 2em;
+    height: 1em;
+    background-color: rgb(206, 206, 55);
+    border-radius: 8px;
+}
+
+.Morty.Smith-rect {
+    fill: rgb(206, 206, 55);
+}
+
+.Summer.Smith {
+    width: 2em;
+    height: 1em;
+    background-color: rgb(195, 25, 25);
+    border-radius: 8px;
+}
+
+.Summer.Smith-rect {
+    fill: rgb(195, 25, 25);
+}
+
+.Beth.Smith {
+    width: 2em;
+    height: 1em;
+    background-color: rgb(42, 42, 192);
+    border-radius: 8px;
+}
+
+.Beth.Smith-rect {
+    fill: rgb(42, 42, 192);
+}
+
+.Jerry.Smith {
+    width: 2em;
+    height: 1em;
+    background-color: orange;
+    border-radius: 8px;
+}
+
+.Jerry.Smith-rect {
+    fill: orange;
+}
+
+
+.char-image {
+    min-width: 1em;
+    min-height: 1em;
+    max-width: 5em;
+    max-height: 5em;
+    border-radius: 5px;
+}
+
+.bar-chart {
+    width: 90%;
+    border: 1px solid black;
+}
+
+.bar-number {
+    font-size: 1em;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.bar-text {
+    fill: white;
+    font-size: 0.35em;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+@media screen and (max-width: 830px) {
+    .legend {
+        flex-direction: column;
+        align-items: center;
+    }
+  }
