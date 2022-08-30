@@ -17,7 +17,7 @@ export default function BarChart() {
         axios.get("https://rickandmortyapi.com/api/character/[1, 2, 3, 4, 5]")
         
         .then(res => {
-
+            console.log(res.data);
             // making sure data array is empy on render
             setData([])
 

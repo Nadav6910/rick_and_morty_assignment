@@ -19,21 +19,38 @@ export default function UnPopularCharsTable() {
         // creating a controller
         const controller = new AbortController()
 
-        //getting data of all characters from api by creating a range of the sum of chars in query
-        axios.get(`https://rickandmortyapi.com/api/character/${Array(826).fill(1).map((x, y) => x + y)}`)
+        const C137Chars = []
+
+        // getting all locations with needed dimension
+        axios.get(`https://rickandmortyapi.com/api/location/?dimension=Dimension C-137&name=Earth (C-137)`)
         
         .then(res => {
 
-            // making sure rows array is empy on render
-            setRows([])
+            res.data.results[0].residents.forEach(resident => {
+                C137Chars.push(resident.split("/")[resident.split("/").length - 1])
+            })
 
-            // go over chars and create rows for chars that fit requirements
-            res.data.forEach(char => {
-                if (char.origin.name === "Earth (C-137)" && char.episode.length <= 1) {
-                  setRows((prevRows) => [...prevRows, createData(char.name, char.origin.name.split(" ")[1], char.origin.name.split(" ")[0], char.episode.length)])
-                } 
+            // getting all chars that exists in those locations
+            axios.get(`https://rickandmortyapi.com/api/character/${C137Chars}`)
+
+            .then(res => {
+
+                // making sure rows array is empy on render
+                setRows([])
+
+                // go over chars and create rows for chars that fit requirements
+                res.data.forEach(char => {
+                    if (char.episode.length <= 1) {
+                        setRows((prevRows) => [
+                            ...prevRows,
+                            createData(char.name, char.origin.name, char.origin.name.split(" ")[0], char.episode.length)
+                        ])
+                    } 
+                })
             })
         })
+
+        
 
         // prevent any memmory leaks on queries to api
         return () => {
@@ -69,7 +86,7 @@ export default function UnPopularCharsTable() {
                 <StyledTableCell>Character name</StyledTableCell>
                 <StyledTableCell align="center">Origin name</StyledTableCell>
                 <StyledTableCell align="center">Origin dimension</StyledTableCell>
-                <StyledTableCell align="center">Poplurity</StyledTableCell>
+                <StyledTableCell align="center">Poplurity(Episodes)</StyledTableCell>
             </TableRow>
             </TableHead>
             <TableBody>
